@@ -24,7 +24,7 @@ export default function Counter() {
     setCounter(Counter + CounterValue);
   }
   function buttonMinus() {
-    setCounter(Counter - CounterValue);
+    setCounter(Math.max(0, Counter - CounterValue));
   }
   function buttonReset() {
     setCounter(Counter - Counter);
@@ -34,16 +34,14 @@ export default function Counter() {
     setCounterValue(CounterValue + 1);
   }
   function buttonMinusValue() {
-    setCounterValue(CounterValue - 1);
+    setCounterValue(Math.max(1, CounterValue - 1));
   }
 
   return (
     <CounterPage>
       <CounterDiv>
         <ButtonPlus onClick={buttonPlus}>+</ButtonPlus>
-        <DisplayCounter>
-          {Counter >= 0 ? Counter : Counter === 0}
-        </DisplayCounter>
+        <DisplayCounter>{Counter}</DisplayCounter>
         <ButtonMinus onClick={buttonMinus}>-</ButtonMinus>
       </CounterDiv>
       <ResetDiv>
@@ -51,9 +49,7 @@ export default function Counter() {
       </ResetDiv>
       <ValueDiv>
         <ButtonPlusValue onClick={buttonPlusValue}>+</ButtonPlusValue>
-        <DisplayValue>
-          {CounterValue >= 1 ? CounterValue : CounterValue === 1}
-        </DisplayValue>
+        <DisplayValue>{CounterValue}</DisplayValue>
         <ButtonMinusValue onClick={buttonMinusValue}>-</ButtonMinusValue>
       </ValueDiv>
     </CounterPage>
