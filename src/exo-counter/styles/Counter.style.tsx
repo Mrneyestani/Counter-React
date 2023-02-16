@@ -26,9 +26,6 @@ export const ButtonPlus = styled.button`
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  animation: incrementAnim 0.5s 1.5s;
-  animation-fill-mode: forwards;
-  transform: scale(1);
 `;
 export const DisplayCounter = styled.div`
   background-color: ${AppTheme.colors.lightViolet};

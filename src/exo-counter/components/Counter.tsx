@@ -1,5 +1,12 @@
 import { SyntheticEvent } from "react";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  solid,
+  regular,
+  brands,
+  icon,
+} from "@fortawesome/fontawesome-svg-core/import.macro";
 import {
   ButtonMinus,
   ButtonMinusValue,
@@ -40,7 +47,10 @@ export default function Counter() {
   return (
     <CounterPage>
       <CounterDiv>
-        <ButtonPlus onClick={buttonPlus}>+</ButtonPlus>
+        <ButtonPlus onClick={buttonPlus}>
+          +
+          {/* <FontAwesomeIcon icon={icon({ name: "plus", style: "solid" })} /> */}
+        </ButtonPlus>
         <DisplayCounter>{Counter}</DisplayCounter>
         <ButtonMinus onClick={buttonMinus}>-</ButtonMinus>
       </CounterDiv>
