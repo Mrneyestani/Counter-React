@@ -8,6 +8,7 @@ export const AppTheme = {
     lightViolet: "rgb(214, 185, 241)",
   },
   font: {
+    family: `'Sora', sans-serif`,
     size: "18px",
   },
 };
@@ -15,6 +16,7 @@ export const AppTheme = {
 export const GlobalStyle = createGlobalStyle`
 :root {
     font-size: ${AppTheme.font.size};
+    font-family: ${AppTheme.font.family};
     background-color: ${AppTheme.colors.darkViolet};
  }
   html, body, #root {

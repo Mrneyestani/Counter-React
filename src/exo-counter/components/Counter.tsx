@@ -1,6 +1,6 @@
 import { SyntheticEvent } from "react";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   solid,
   regular,
@@ -35,6 +35,7 @@ export default function Counter() {
   }
   function buttonReset() {
     setCounter(0);
+    setIncrement(1);
   }
 
   function buttonPlusIncrement() {
@@ -50,8 +51,7 @@ export default function Counter() {
         <ButtonMinus onClick={buttonMinus}>-</ButtonMinus>
         <DisplayCounter>{counter}</DisplayCounter>
         <ButtonPlus onClick={buttonPlus}>
-          +
-          {/* <FontAwesomeIcon icon={icon({ name: "plus", style: "solid" })} /> */}
+          <i className="fa-solid fa-plus"></i>
         </ButtonPlus>
       </CounterDiv>
       <ResetDiv>
