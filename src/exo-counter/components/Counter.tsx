@@ -1,20 +1,10 @@
 import { SyntheticEvent } from "react";
 import { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  solid,
-  regular,
-  brands,
-  icon,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
-import {
-  ButtonMinus,
-  ButtonMinusIncrement,
-  ButtonPlus,
-  ButtonPlusIncrement,
-  ButtonReset,
+  Button,
   CounterDiv,
   CounterPage,
+  Display,
   DisplayCounter,
   DisplayIncrement,
   ResetDiv,
@@ -47,25 +37,29 @@ export default function Counter() {
 
   return (
     <CounterPage>
+      <h1>Compteur</h1>
       <CounterDiv>
-        <ButtonMinus onClick={buttonMinus}>-</ButtonMinus>
-        <DisplayCounter>{counter}</DisplayCounter>
-        <ButtonPlus onClick={buttonPlus}>
-          <i className="fa-solid fa-plus"></i>
-        </ButtonPlus>
+        <Button onClick={buttonMinus}>
+          <i className="fa-solid fa-circle-minus"></i>
+        </Button>
+        <Display>{counter}</Display>
+        <Button onClick={buttonPlus}>
+          <i className="fa-solid fa-circle-plus"></i>
+        </Button>
       </CounterDiv>
       <ResetDiv>
-        <ButtonReset onClick={buttonReset}>Reset</ButtonReset>
+        <Button onClick={buttonReset}>Reset</Button>
       </ResetDiv>
       <ValueDiv>
-        <ButtonMinusIncrement onClick={buttonMinusIncrement}>
-          -
-        </ButtonMinusIncrement>
-        <DisplayIncrement>{increment}</DisplayIncrement>
-        <ButtonPlusIncrement onClick={buttonPlusIncrement}>
-          +
-        </ButtonPlusIncrement>
+        <Button onClick={buttonMinusIncrement}>
+          <i className="fa-solid fa-circle-minus"></i>
+        </Button>
+        <Display>{increment}</Display>
+        <Button onClick={buttonPlusIncrement}>
+          <i className="fa-solid fa-circle-plus"></i>
+        </Button>
       </ValueDiv>
+      <h2>Incrément</h2>
     </CounterPage>
   );
 }

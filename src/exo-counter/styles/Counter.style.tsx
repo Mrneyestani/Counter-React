@@ -17,51 +17,35 @@ export const CounterDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const ButtonPlus = styled.button`
+export const Button = styled.button`
   background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
-  padding: 2rem;
+  padding: 1.5rem;
   margin: 1rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
+  font-size: 1.5rem;
+  font-family: ${AppTheme.font.family};
 `;
-export const DisplayCounter = styled.div`
+export const Display = styled.div`
   background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 50%;
+  border-radius: 100%;
   border: none;
   padding: 2rem;
   margin: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
 `;
-export const ButtonMinus = styled.button`
-  background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 5px;
-  border: none;
-  padding: 2rem;
-  margin: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-`;
+
 export const ResetDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
-export const ButtonReset = styled.button`
-  background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 5px;
-  border: none;
-  padding: 2rem;
-  margin: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-`;
+
 export const ValueDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -69,31 +53,4 @@ export const ValueDiv = styled.div`
   align-items: center;
   font-size: 1.5rem;
   font-weight: 600;
-`;
-export const ButtonPlusIncrement = styled.button`
-  background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 5px;
-  border: none;
-  padding: 2rem;
-  margin: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-`;
-export const DisplayIncrement = styled.div`
-  background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 100%;
-  border: none;
-  padding: 2rem;
-  margin: 1rem;
-`;
-export const ButtonMinusIncrement = styled.button`
-  background-color: ${AppTheme.colors.lightViolet};
-  border-radius: 5px;
-  border: none;
-  padding: 2rem;
-  margin: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
 `;
