@@ -7,11 +7,15 @@ export const AppTheme = {
     violet: "#a775ec",
     lightViolet: "rgb(214, 185, 241)",
   },
+  font: {
+    size: "18px",
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`
 :root {
-background-color: #dbdbdb;
+    font-size: ${AppTheme.font.size};
+    background-color: ${AppTheme.colors.darkViolet};
  }
   html, body, #root {
     margin: 0;
@@ -22,7 +26,7 @@ background-color: #dbdbdb;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${AppTheme.colors.darkViolet};
+    
   };
 
   *{

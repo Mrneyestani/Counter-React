@@ -9,14 +9,14 @@ import {
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 import {
   ButtonMinus,
-  ButtonMinusValue,
+  ButtonMinusIncrement,
   ButtonPlus,
-  ButtonPlusValue,
+  ButtonPlusIncrement,
   ButtonReset,
   CounterDiv,
   CounterPage,
   DisplayCounter,
-  DisplayValue,
+  DisplayIncrement,
   ResetDiv,
   ValueDiv,
 } from "../styles/Counter.style";
@@ -24,43 +24,47 @@ import {
 type DisplayStatus = number;
 
 export default function Counter() {
-  const [Counter, setCounter] = useState<DisplayStatus>(0);
-  const [CounterValue, setCounterValue] = useState<DisplayStatus>(1);
+  const [counter, setCounter] = useState<DisplayStatus>(0);
+  const [increment, setIncrement] = useState<DisplayStatus>(1);
 
   function buttonPlus() {
-    setCounter(Counter + CounterValue);
+    setCounter(counter + increment);
   }
   function buttonMinus() {
-    setCounter(Math.max(0, Counter - CounterValue));
+    setCounter(Math.max(0, counter - increment));
   }
   function buttonReset() {
-    setCounter(Counter - Counter);
+    setCounter(0);
   }
 
-  function buttonPlusValue() {
-    setCounterValue(CounterValue + 1);
+  function buttonPlusIncrement() {
+    setIncrement(increment + 1);
   }
-  function buttonMinusValue() {
-    setCounterValue(Math.max(1, CounterValue - 1));
+  function buttonMinusIncrement() {
+    setIncrement(Math.max(1, increment - 1));
   }
 
   return (
     <CounterPage>
       <CounterDiv>
+        <ButtonMinus onClick={buttonMinus}>-</ButtonMinus>
+        <DisplayCounter>{counter}</DisplayCounter>
         <ButtonPlus onClick={buttonPlus}>
           +
           {/* <FontAwesomeIcon icon={icon({ name: "plus", style: "solid" })} /> */}
         </ButtonPlus>
-        <DisplayCounter>{Counter}</DisplayCounter>
-        <ButtonMinus onClick={buttonMinus}>-</ButtonMinus>
       </CounterDiv>
       <ResetDiv>
         <ButtonReset onClick={buttonReset}>Reset</ButtonReset>
       </ResetDiv>
       <ValueDiv>
-        <ButtonPlusValue onClick={buttonPlusValue}>+</ButtonPlusValue>
-        <DisplayValue>{CounterValue}</DisplayValue>
-        <ButtonMinusValue onClick={buttonMinusValue}>-</ButtonMinusValue>
+        <ButtonMinusIncrement onClick={buttonMinusIncrement}>
+          -
+        </ButtonMinusIncrement>
+        <DisplayIncrement>{increment}</DisplayIncrement>
+        <ButtonPlusIncrement onClick={buttonPlusIncrement}>
+          +
+        </ButtonPlusIncrement>
       </ValueDiv>
     </CounterPage>
   );

@@ -70,7 +70,7 @@ export const ValueDiv = styled.div`
   font-size: 1.5rem;
   font-weight: 600;
 `;
-export const ButtonPlusValue = styled.button`
+export const ButtonPlusIncrement = styled.button`
   background-color: ${AppTheme.colors.lightViolet};
   border-radius: 5px;
   border: none;
@@ -80,14 +80,14 @@ export const ButtonPlusValue = styled.button`
   font-weight: 600;
   cursor: pointer;
 `;
-export const DisplayValue = styled.div`
+export const DisplayIncrement = styled.div`
   background-color: ${AppTheme.colors.lightViolet};
   border-radius: 100%;
   border: none;
   padding: 2rem;
   margin: 1rem;
 `;
-export const ButtonMinusValue = styled.button`
+export const ButtonMinusIncrement = styled.button`
   background-color: ${AppTheme.colors.lightViolet};
   border-radius: 5px;
   border: none;
