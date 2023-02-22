@@ -2,31 +2,47 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 import bikeImg from "../assets/bek1.png";
 import { ButtonInscrire, ConnectLink } from "../styles/Subscription.style";
 import { map } from "nanostores";
-
-export const SubscriptionStore = map({
-  email: "",
-  pass: "",
-});
+import {
+  changeEmail,
+  changePassword,
+  InscriptionStore,
+} from "../stores/Subscription.store";
+import { useStore } from "@nanostores/react";
 
 /**
  * Composant affichant l'écran Subscription
  */
 export default function Subscription() {
-  const { email, setEmail } = useStore(SubscriptionStore);
-  const { password, setPassword } = useStore(SubscriptionStore);
+  const { email, password, isPasswordValid, isEmailValid } =
+    useStore(InscriptionStore);
+
   return (
     <>
       <h1>Inscription</h1>
       <input
         type="email"
         value={email}
-        onChange={(e) => setEmail(e.currentTarget.value)}
-      ></input>
+        // onChange={(e) => changeEmail(e.currentTarget.value)}
+        // onChange={(e) => changeEmail(e)}
+        onChange={changeEmail}
+      />
+      {isEmailValid === null ? null : isEmailValid ? (
+        <p>Valide</p>
+      ) : (
+        <p>Non Valide</p>
+      )}
       <input
         type="password"
         value={password}
-        onChange={(e) => setPassword(e.currentTarget.value)}
+        onChange={changePassword}
+        // onChange={(e) => setPassword(e.currentTarget.value)}
+        // onChange={(e) => setPassword(e)}
       ></input>
+      {isPasswordValid === null ? null : isPasswordValid ? (
+        <p>Valide</p>
+      ) : (
+        <p>Non Valide</p>
+      )}
       <ButtonInscrire>
         <button>S'inscrire</button>
       </ButtonInscrire>
