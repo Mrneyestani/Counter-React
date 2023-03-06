@@ -1,19 +1,23 @@
 import { StrictMode } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { SubscribeStore } from "../stores/Subscribe.store";
 import { AppGlobalStyle } from "../styles/App.style";
-import Subscription from "./Subscription";
+import Subscribe from "./Subscription";
+import TodoList from "./TodoList";
 
 /**
- * Composant affichant l'application
- *
- * @link https://www.figma.com/file/bwQ0R9kNPCcCVPqpaySbpE/Todo-App?node-id=0%3A1&t=cbRxYmUjqOpfpAD7-1
+ * Main component displaying the entire super todo
+ * app. You'll find there the routes and screens of
+ * the application
  */
 export default function App() {
   return (
     <StrictMode>
-      <AppGlobalStyle />
       <BrowserRouter>
-        <Subscription />
+        <Routes>
+          <Route path="/inscription" element={<Subscribe />} />
+          <Route path="/todo-list" element={<TodoList />} />
+        </Routes>
       </BrowserRouter>
     </StrictMode>
   );
