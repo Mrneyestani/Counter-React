@@ -1,6 +1,10 @@
+import { async } from "@firebase/util";
 import { useStore } from "@nanostores/react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { action, map } from "nanostores";
 import { ChangeEvent } from "react";
+import { firebaseAuth } from "../lib/Firebase";
+import { SubscribeStore } from "./Subscribe.store";
 
 /**
  * Contains a todo item

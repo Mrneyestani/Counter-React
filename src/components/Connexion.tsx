@@ -1,12 +1,11 @@
 import { useStore } from "@nanostores/react";
+import { useState } from "react";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
-
 import {
   changeEmail,
   changePassword,
   connexion,
-  subscribe,
   SubscribeStore,
 } from "../stores/Subscribe.store";
 import {
@@ -18,22 +17,20 @@ import {
   Title,
 } from "../styles/SubscriptionConnexion.style";
 
-export default function Subscribe() {
-  // Retrieve the state of the subscribe store
+export default function Connexion() {
   const { email, password, isPasswordValid, isEmailValid, user } =
     useStore(SubscribeStore);
-
-  // Si je suis connécté
+  //si je suis connécté
   if (user) {
-    // On redirige vers la page d'accueil
-    return <Navigate to="/connexion"></Navigate>;
+    //on redirige vers la page d'accueil
+    return <Navigate to="/"></Navigate>;
   }
 
   return (
     <>
       <Main>
         <div>
-          <Title>Inscription</Title>
+          <Title> Connexion</Title>
         </div>
         <DivInput>
           <Div>
@@ -43,6 +40,7 @@ export default function Subscribe() {
               type="email"
               onChange={(e) => {
                 changeEmail(e.currentTarget.value);
+                //console.log(e.currentTarget.value)
               }}
             />
             {isEmailValid === null ? null : isEmailValid ? (
@@ -64,18 +62,18 @@ export default function Subscribe() {
               <i className="fa-solid fa-circle-check"></i>
             ) : (
               // <p>Valide</p>
-              // <p>Non Valide</p>
               <i className="fa-solid fa-circle-xmark"></i>
+              // <p>Non Valide</p>
             )}
           </Div>
         </DivInput>
         <div>
-          <Button onClick={subscribe}>S'inscrire</Button>
+          <Button onClick={connexion}>Envoyer</Button>
         </div>
         <DivLink>
-          <Link className="link" to="/connexion">
-            <p>Vous avez dèja un compte ?</p>
-            <p>Connéctez-vous</p>
+          <Link className="link" to="/inscription">
+            <p>Vous n’avez pas de compte ? </p>
+            <p>Inscrivez vous</p>
           </Link>
         </DivLink>
       </Main>
