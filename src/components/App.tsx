@@ -15,6 +15,7 @@ export default function App() {
     <StrictMode>
       <BrowserRouter>
         <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/inscription" element={<Subscribe />} />
           <Route path="/todo-list" element={<TodoList />} />
         </Routes>
