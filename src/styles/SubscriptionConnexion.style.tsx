@@ -10,7 +10,6 @@ export const Main = styled.div`
 
 export const DivLink = styled.div`
   .link {
-    margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,13 +30,18 @@ export const Div = styled.div`
   padding: 0.5rem;
   margin: 1rem;
   i {
-    color: ${AppTheme.colors.validgreen};
     margin: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+  i.fa-circle-check {
+    color: ${AppTheme.colors.validgreen};
+  }
+  i.fa-circle-xmark {
+    color: ${AppTheme.colors.red};
   }
   input {
     border: ${AppTheme.colors.lightGreen};
-    background-color: ${AppTheme.colors.lightGreen};
+    background-color: transparent;
     padding: 0.5rem;
     outline: none;
   }
@@ -58,7 +62,7 @@ export const Button = styled.button`
   font-weight: 600;
   text-align: center;
   border-radius: 10px;
-  background-color: ${AppTheme.colors.validgreen};
+  background-color: ${AppTheme.colors.greenOcean};
   color: ${AppTheme.colors.white};
   margin: 1rem;
   padding: 0.8rem 3rem;

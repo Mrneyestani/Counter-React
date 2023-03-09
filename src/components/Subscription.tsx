@@ -41,6 +41,7 @@ export default function Subscribe() {
               className="Input"
               value={email}
               type="email"
+              placeholder="Email"
               onChange={(e) => {
                 changeEmail(e.currentTarget.value);
               }}
@@ -57,6 +58,7 @@ export default function Subscribe() {
             <input
               className="Input"
               type="password"
+              placeholder="Mot de passe"
               value={password}
               onChange={changePassword}
             />
@@ -73,8 +75,8 @@ export default function Subscribe() {
           <Button onClick={subscribe}>S'inscrire</Button>
         </div>
         <DivLink>
+          <p>Vous avez dèja un compte ?</p>
           <Link className="link" to="/connexion">
-            <p>Vous avez dèja un compte ?</p>
             <p>Connéctez-vous</p>
           </Link>
         </DivLink>

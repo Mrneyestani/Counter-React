@@ -5,14 +5,14 @@ import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// My web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAdtLeBsAUFkqyUyc5Jj4F9zevUjdUQk2M",
-  authDomain: "todo-app-25531.firebaseapp.com",
-  projectId: "todo-app-25531",
-  storageBucket: "todo-app-25531.appspot.com",
-  messagingSenderId: "941310629080",
-  appId: "1:941310629080:web:08cef8ccfdd83b20b933ad",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Application Firebase

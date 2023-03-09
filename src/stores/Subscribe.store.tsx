@@ -24,6 +24,7 @@ export type SubscribeState = {
   password: string;
   isEmailValid: boolean | null;
   isPasswordValid: boolean | null;
+  isSending: boolean;
   user?: {
     uid: string;
     email: string | null;
@@ -40,6 +41,7 @@ export const SubscribeStore = map<SubscribeState>({
   isPasswordValid: null,
   isEmailValid: null,
   user: undefined,
+  isSending: false,
   //goto: null,
 });
 

@@ -38,6 +38,7 @@ export default function Connexion() {
               className="Input"
               value={email}
               type="email"
+              placeholder="Email"
               onChange={(e) => {
                 changeEmail(e.currentTarget.value);
                 //console.log(e.currentTarget.value)
@@ -55,6 +56,7 @@ export default function Connexion() {
             <input
               className="Input"
               type="password"
+              placeholder="Mot de passe"
               value={password}
               onChange={changePassword}
             />
@@ -68,11 +70,11 @@ export default function Connexion() {
           </Div>
         </DivInput>
         <div>
-          <Button onClick={connexion}>Envoyer</Button>
+          <Button onClick={connexion}>Connection</Button>
         </div>
         <DivLink>
+          <p>Vous n’avez pas de compte ? </p>
           <Link className="link" to="/inscription">
-            <p>Vous n’avez pas de compte ? </p>
             <p>Inscrivez vous</p>
           </Link>
         </DivLink>
