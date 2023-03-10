@@ -7,8 +7,9 @@ import styled from "styled-components";
 import {
   addNewTodo,
   changeNewTodo,
-  resetchangerPage,
+  removeTodo,
   SuperStore,
+  toggleTask,
 } from "../stores/SuperStore.store";
 import {
   DivIcon,
@@ -27,15 +28,17 @@ export default function TodoList() {
   const { lists, nameNewTodo } = useStore(SuperStore);
   // const activeIndex = lists.findIndex((elem) => elem.active);
   // const table = lists[activeIndex];
-  const { index } = useParams();
-  const newIndex: number = index ? parseInt(index, 10) : 0;
+  const { index }: any = useParams();
+  const position = parseFloat(index);
+  const list = lists[position];
+
   // useEffect(() => {
   //   resetchangerPage();
   // }, []);
 
   return (
     <>
-      <h1>{lists[newIndex].name}</h1>
+      <h1>{lists[position].name}</h1>
       <DivInput>
         <input
           type="text"
@@ -44,31 +47,23 @@ export default function TodoList() {
         />
         <button
           onClick={() => {
-            addNewTodo(newIndex);
+            addNewTodo(position);
           }}
         >
           <i className="fa-solid fa-circle-plus"></i>
         </button>
       </DivInput>
-      <div>
-        <ul>
-          {lists[newIndex].todos.map((item, index) => (
-            <li key={index}> {item.name}</li>
-          ))}
-        </ul>
-      </div>
-      {/* <DivLists>
-        {todoList.map((todo, index) => (
-          <DivList>
-            <ListAfaire onClick={() => toggleTodo(index)}>
-              {todo.labelTodo} ({todo.doneTodo ? "Fait" : "À Faire"})
-            </ListAfaire>
-            <DivIcon onClick={() => removeTodo(index)}>
-              <i className="fa-solid fa-trash"></i>
-            </DivIcon>
-          </DivList>
-        ))}
-      </DivLists> */}
+      {list.todos.map((task, i) => (
+        <div onClick={() => toggleTask(position, i)} key={index}>
+          <p>
+            {task.name} ({task.isdone ? "Fait" : "À faire"})
+          </p>
+          <i
+            className="fa-solid fa-trash"
+            onClick={() => removeTodo(position, i)}
+          ></i>
+        </div>
+      ))}
     </>
   );
 }

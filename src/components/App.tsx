@@ -22,7 +22,7 @@ export default function App() {
         <nav>
           <Link to="/">Home</Link>
           <br />
-          <Link to="/todo-list">TodoList</Link>
+          <Link to="/todo-list/:index">TodoList</Link>
           <br />
           <Link to="/nouvelle-task">NouvelleList</Link>
           <br />

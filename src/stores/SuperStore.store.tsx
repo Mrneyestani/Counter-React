@@ -1,5 +1,7 @@
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { action, map } from "nanostores";
 import { ChangeEvent } from "react";
+import { firebaseDb } from "../lib/Firebase";
 
 export type List = {
   name: string;
@@ -63,6 +65,7 @@ export const addNewList = action(SuperStore, "add new task", (store) => {
 
   // Place the newList into the store
   store.setKey("lists", myNewLists);
+  save();
 });
 
 /**
@@ -97,8 +100,6 @@ export const addNewTodo = action(
     // Retrieve the new task
 
     const { lists, nameNewTodo } = store.get();
-    console.log(activeIndex);
-    console.log(nameNewTodo);
     const list = lists[activeIndex];
     const newTodo = {
       name: nameNewTodo,
@@ -110,42 +111,79 @@ export const addNewTodo = action(
     store.setKey("lists", lists);
     store.setKey("nameNewTodo", "");
     console.log(lists[activeIndex].todos);
-    // const matable = lists.map((newTodo, i) => {
-    //   if (!newTodo.active) {
-    //     return newTodo;
-    //   }
-
-    //   newTodo;
-    // });
-
-    // Check if the task is empty
-    // if (!newTodo.length) {
-    //   return;
-    // }
-    // const todo: string = newTodo;
-    // store.setKey("newTodo", todo);
-    // //   // Create the task
-    // //   const task: tableGlobal = { nameTask: newListTask, active: false };
-    // const newtable: List = {
-    //   name: newList,
-    //   user: "Rose",
-    //   active: true,
-    //   newTodo: "",
-    //   todo: [],
-    // };
-    // Creates a new list from the taskList and
-    // prepend the task
-    // const mynewtable = [List, ...lists];
-
-    // // Place the newList into the store
-
-    // store.setKey("changerPage", true);
+    save();
   }
 );
-export const resetchangerPage = action(
+/**
+ * Active ou désactive une tache
+ */
+export const toggleTask = action(
   SuperStore,
-  "reset ChangePAge",
-  (store) => {
-    store.setKey("changerPage", false);
+  "toggleTask",
+  (store, listIndex: number, taskIndex: number) => {
+    // Je récupére toutes les todo lists
+    const { lists } = store.get();
+
+    // Je modifie les listes
+    const newLists = lists.map((list, i) => {
+      if (i !== listIndex) {
+        return list;
+      }
+
+      const newTasks = list.todos.map((todo, i2) => {
+        if (i2 !== taskIndex) {
+          return todo;
+        }
+
+        return { ...todo, done: !todo.isdone };
+      });
+
+      return { ...list, todos: newTasks };
+    });
+
+    store.setKey("lists", newLists);
+
+    save();
   }
 );
+
+export const removeTodo = action(
+  SuperStore,
+  "remove a todo",
+  (store, listIndex: number, taskIndex: number) => {
+    // Retrieve the todo list
+    const { lists } = store.get();
+
+    // Creates a new todo list without the todo at
+    // the given index
+    const newLists = lists.map((list, i) => {
+      if (i !== listIndex) {
+        return list;
+      }
+      const newTasks = list.todos.filter((todo, i2) => i2 !== taskIndex);
+
+      return { ...list, todos: newTasks };
+    });
+
+    store.setKey("lists", newLists);
+
+    save();
+  }
+);
+
+export const TODOLIST_COLLECTION = "todoList";
+
+export const save = action(SuperStore, "save", async (store) => {
+  const { lists } = store.get();
+  const col = collection(firebaseDb, TODOLIST_COLLECTION);
+
+  const reference = await setDoc(doc(firebaseDb), { lists });
+
+  // const id = reference.id;
+  // const snap = await getDoc(doc(firebaseDb, TODOLIST_COLLECTION, id));
+  // const newTodolist = snap.data();
+  // return {
+  //   id: id,
+  //   ...newTodolist,
+  // } as Identifiable<Todolist>;
+});
